@@ -1,0 +1,32 @@
+ext {
+    packaging = [
+            groupId : 'com.gravityray',
+            artifactId : 'rxeventemitter',
+
+            versionCode : 1,
+            versionName : '0.1.0-SNAPSHOT',
+            versionDescription : 'Initial implementation.',
+            vcsTag : 'v0.1.0',
+
+
+            websiteUrl : 'https://github.com/Antor/RxEventEmitter',
+            issueTrackerUrl : 'https://github.com/Antor/RxEventEmitter/issues',
+            vcsUrl : 'https://github.com/Antor/RxEventEmitter',
+
+            githubRepo : 'Antor/RxEventEmitter',
+            githubReleaseNotesFile : 'CHANGES.md',
+
+            bintrayRepo : 'maven',
+
+            name : 'RxEventEmitter',
+            description : 'Wrapper around BehaviorSubject that allows to consume published items only once.',
+
+            bintrayLicense : 'MIT',
+
+            pomLicenseName : 'MIT License',
+            pomLicenseUrl : 'http://www.opensource.org/licenses/mit-license.php',
+
+            developerName : 'Andrei Tsiatsera',
+            developerEmail : 'Paladin26@narod.ru'
+    ]
+}
