@@ -69,7 +69,7 @@ public final class RxEventEmitter<T> {
     public Observable<T> observe() {
         return eventSubject
                 .filter(event -> !event.isConsumed())
-                .doOnNext(this::onConsumed)
+                .doOnNext(this::consumeEvent)
                 .map(Event::getValue);
     }
 
@@ -101,13 +101,15 @@ public final class RxEventEmitter<T> {
         }
     }
 
-    private void onConsumed(Event<T> event) {
-        eventSubject.firstElement()
-                .filter(event::equals)
-                .subscribe(currentEvent ->
-                        eventSubject.onNext(new Event<>(
-                                event.getId(),
-                                event.getValue(),
-                                true)));
+    private void consumeEvent(Event<T> event) {
+        synchronized (this) {
+            Event<T> currentEvent = eventSubject.blockingFirst(null);
+            if (currentEvent != null && currentEvent.equals(event)) {
+                eventSubject.onNext(new Event<>(
+                        event.getId(),
+                        event.getValue(),
+                        true));
+            }
+        }
     }
 }
