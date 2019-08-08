@@ -4,7 +4,7 @@ ext {
             artifactId : 'rxeventemitter',
 
             versionCode : 1,
-            versionName : '0.1.0-SNAPSHOT',
+            versionName : '0.1.0',
             versionDescription : 'Initial implementation.',
             vcsTag : 'v0.1.0',
 
